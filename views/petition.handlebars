@@ -1,0 +1,40 @@
+<div id="petition-page">
+    <img id="petition-picture" src="/images/carrots.jpg" alt="a hand holding a bunch of carrots">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - first and last name -->
+
+<h1 id="petition-title">WHAT WE BELIEVE</h1>
+<p id="petition-argument">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio exercitationem expedita optio deleniti numquam maxime recusandae. Quisquam modi, in numquam voluptatem sunt deserunt, et ullam amet blanditiis quas sed pariatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+<p id="error">{{message}}</p>
+
+<div id="petition-form">
+    <form method="post">
+        <div id="form-info">
+            <div id="form-first">
+                <label id ="label-first" for="first">First Name</label>
+                <input type="text" id="first" name="first" />
+            </div>
+            <div id="form-last">
+                <label id ="label-last" for="last">Last Name</label>
+                <input type="text" id="last" name="last" />
+            </div>
+        </div>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - canvas and hidden field -->
+        <div id="form-signature">  
+            <canvas id="canvas"></canvas>
+
+            <label for="signature"></label>
+            <p id ="label-signature">And your signature</p>
+            <input type="text" id="signature" name="signature" />
+        </div>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - submit button -->
+
+        <input id="submit" type="submit" value="submit" />
+    </form>
+    {{!-- <div id="petition-line-1"></div>
+    <div id="petition-line-2"></div>
+    <div id="petition-line-3"></div> --}}
+</div>
+</div>

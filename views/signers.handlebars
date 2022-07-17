@@ -1,0 +1,14 @@
+<div id="signers-page">
+    <img id="signers-picture" src="/images/kiwi.jpg" alt="some veggies exploding artistically">
+    <div id="signers-box">
+        <h1 id="signers-title">GREAT MINDS THINK ALIKE</h1>
+        <p id="signers-subtitle">These people also agree with you</p>
+        <div id="signers-list">
+            {{#signersData}}
+                <p class="signersData">{{first}} {{last}}</p>
+            {{/signersData}}
+        </div>
+    </div>
+    <div id="signers-line-1"></div>
+    <div id="signers-line-2"></div>
+</div>
