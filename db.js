@@ -11,11 +11,15 @@ module.exports.getSignature = () => {
 
 module.exports.addSignature = (first, last, signature, time) => {
     return db.query(
-        `INSERT INTO signatures(first, last, signature, time) VALUES ($1, $2, $3, $4)`,
+        `INSERT INTO signatures(first, last, signature, time) VALUES ($1, $2, $3, $4) RETURNING id`, //RETURNING is used to return values
         [first, last, signature, time]
     );
 };
 
 module.exports.countSignatures = () => {
     return db.query(`SELECT COUNT(*) FROM signatures`);
+};
+
+module.exports.getUserSignature = (id) => {
+    return db.query(`SELECT signature FROM signatures WHERE id = ${id}`);
 };

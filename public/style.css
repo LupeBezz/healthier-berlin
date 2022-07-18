@@ -79,17 +79,18 @@
     font-size: 50px;
     color: black;
     position: absolute;
-    top: 60px;
+    top: 90px;
     left: 160px;
 }
 
 #petition-argument {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
+    line-height: 30px;
     margin-top: 6px;
     position: absolute;
     width: 600px;
-    top: 130px;
+    top: 160px;
     left: 100px;
     text-align: center;
 }
@@ -112,7 +113,7 @@
     display: flex;
     flex-direction: column;
     left: 100px;
-    bottom: 100px;
+    bottom: 130px;
     width: 600px;
 }
 
@@ -184,8 +185,6 @@
 }
 
 #canvas {
-    width: 600px;
-    height: 200px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
 }
@@ -214,33 +213,6 @@
     left: 290px;
     color: orangered;
 }
-
-/* #petition-line-1 {
-    position: absolute;
-    top: -110px;
-    left: 0px;
-    width: 170px;
-    border: 1px solid black;
-    color: black;
-}
-
-#petition-line-2 {
-    position: absolute;
-    top: -110px;
-    left: 200px;
-    width: 170px;
-    border: 1px solid black;
-    color: black;
-}
-
-#petition-line-3 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 600px;
-    border: 1px solid black;
-    color: black;
-} */
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - thanks page */
 
@@ -295,20 +267,26 @@
 
 #thanks-line-1 {
     position: absolute;
-    top: 300px;
+    top: 490px;
     left: 360px;
-    width: 170px;
+    width: 185px;
     border: 1px solid black;
     color: black;
 }
 
 #thanks-line-2 {
     position: absolute;
-    top: 300px;
-    left: 910px;
-    width: 170px;
+    top: 490px;
+    left: 895px;
+    width: 185px;
     border: 1px solid black;
     color: black;
+}
+
+#thanks-signature {
+    position: absolute;
+    bottom: -210px;
+    left: 80px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - signers */
@@ -358,7 +336,7 @@
     top: 200px;
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    margin-bottom: 20px;
+    line-height: 30px;
 }
 
 #signers-line-1 {
@@ -387,14 +365,14 @@
     position: absolute;
     bottom: 20px;
     right: 30px;
-    color: white;
+    color: gray;
 }
 
 #footer-LB {
     font-family: "Montserrat", sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     position: absolute;
     bottom: 20px;
     left: 30px;
-    color: white;
+    color: gray;
 }
