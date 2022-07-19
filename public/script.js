@@ -58,11 +58,6 @@ var submit = $("#submit");
 submit.on("mouseup", () => {
     var signature = $("#signature");
     var inputSignatureURL = canvas.toDataURL();
-    // var hiddenFieldValue = signature.val();
-    // hiddenFieldValue = inputSignatureURL;
+
     signature.val(inputSignatureURL);
-    // console.log(
-    //     `First: ${inputFirst}, last: ${inputLast}, signature url: ${inputSignatureURL}`
-    // );
-    //console.log(hiddenFieldValue);
 });

@@ -39,36 +39,133 @@ app.use(
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /
 
 app.get("/", (req, res) => {
-    if (req.session.signatureId !== undefined) {
-        res.redirect("/thanks");
+    if (req.session.loginId !== undefined) {
+        db.getUserSignature(req.session.loginId)
+            .then(() => {
+                res.redirect("/thanks");
+            })
+            .catch(() => {
+                res.redirect("/petition");
+            });
     } else {
         res.render("intro", {});
         console.log("get request to / works");
     }
 });
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /register - - - In progress
+
+app.get("/register", (req, res) => {
+    res.render("register", {});
+});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /register - - - In progress
+
+// var hashedPassword;
+// db.hashPassword(req.body.password)
+//     .then((results) => {
+//         hashedPassword = results;
+//     })
+//     .catch((err) => {
+//         "Error in hash password";
+//     });
+
+app.post("/register", (req, res) => {
+    let time = new Date().toISOString().slice(0, 19).replace("T", " ");
+    if (
+        req.body.first != "" &&
+        req.body.last != "" &&
+        req.body.email != "" &&
+        req.body.password != ""
+    ) {
+        db.addUser(
+            req.body.regFirst,
+            req.body.regLast,
+            req.body.regEmail,
+            req.body.regPassword,
+            time
+        )
+            .then((results) => {
+                console.log("addUser worked!");
+                // - - - - - - - - - - - - - - - - - - - - req. session.loginId > the user registered and stays logged in
+                var loginUserId = results.rows[0].id;
+                req.session.loginId = loginUserId;
+                //res.send(`loginId: ${req.session.loginId}`);
+                res.redirect("/petition");
+            })
+            .catch((err) => {
+                console.log("error in addUser", err);
+                res.render("register", {
+                    message: "There was a problem, please try again!",
+                });
+            });
+        console.log("post request to /register works");
+    } else {
+        res.render("register", {
+            message: "All fields are necessary!",
+        });
+    }
+});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /login - - - In progress
+
+app.get("/login", (req, res) => {
+    res.render("login", {});
+});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /login - - - In progress
+
+app.post("/login", (req, res) => {
+    //var re;
+    db.getUserInfo(req.body.loginEmail)
+        .then((results) => {
+            //re = results;
+            //console.log("results:", re);
+            if (req.body.loginPassword === results.rows[0].password) {
+                // - - - - - - - - - - - - - - - - - - - - req. session.loginId > the user successfully logged in
+                req.session.loginId = results.rows[0].id;
+                //res.send(`loginId: ${req.session.loginId}`);
+                db.getUserSignature(req.session.loginId)
+                    .then(() => {
+                        res.redirect("/thanks");
+                    })
+                    .catch(() => {
+                        res.redirect("/petition");
+                    });
+            }
+        })
+        .catch((err) => {
+            console.log("error in login: ", err);
+            console.log("req.body.loginEmail:", req.body.loginEmail);
+            console.log("req.body.loginPassword:", req.body.loginPassword);
+
+            res.render("login", {
+                message: "Please try again!",
+            });
+        });
+});
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /petition
 
 app.get("/petition", (req, res) => {
-    if (req.session.signatureId !== undefined) {
+    if (req.session.loginId !== undefined) {
         res.redirect("/thanks");
     } else {
-        res.render("petition", {});
+        res.redirect("/register");
         console.log("get request to /petition works");
     }
 });
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /petition
 
 app.post("/petition", (req, res) => {
     let time = new Date().toISOString().slice(0, 19).replace("T", " ");
+    let userId = req.session.loginId; // ?????
 
-    db.addSignature(req.body.first, req.body.last, req.body.signature, time)
+    db.addSignature(req.body.signature, time, userId)
         .then((results) => {
             console.log("addSignature worked!");
-            // - - - - - - - - - - - cookie
-            var userId = results.rows[0].id;
-            //console.log(results.rows[0].id);
+            // - - - - - - - - - - - - - - - - - - - - req. session.signatureId > the user signed
             req.session.signatureId = userId;
             //res.send(`signatureId: ${req.session.signatureId}`);
 
@@ -76,7 +173,9 @@ app.post("/petition", (req, res) => {
         })
         .catch((err) => {
             console.log("error in addSignature", err);
-            res.render("petition", { message: "All fields are necessary" });
+            res.render("petition", {
+                message: "We really need your signature!",
+            });
         });
     console.log("post request to /petition works");
 });
@@ -111,6 +210,16 @@ app.get("/thanks", (req, res) => {
                 res.sendStatus(500);
             });
     }
+});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /thanks (logout button)
+
+app.post("/thanks", (req, res) => {
+    var signoutButton = $("#signout-button");
+
+    signoutButton.on("mouseup", () => {
+        req.session.signatureId = null;
+    });
 });
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /signers

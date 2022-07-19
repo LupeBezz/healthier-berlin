@@ -72,6 +72,180 @@
     color: orangered;
 }
 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - register page */
+
+#register-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    color: black;
+    position: absolute;
+    top: 90px;
+    left: 160px;
+}
+
+#register-page {
+    height: 100%;
+    background-color: rgba(211, 213, 212, 255);
+}
+
+#register-picture {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 800px;
+}
+
+#register-form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 100px;
+    bottom: 130px;
+    width: 600px;
+}
+
+#reg-label-first {
+    margin-bottom: 10px;
+}
+
+#reg-label-last {
+    margin-bottom: 10px;
+}
+
+#reg-label-email {
+    margin-bottom: 10px;
+}
+
+#reg-label-password {
+    margin-bottom: 10px;
+}
+
+#regFirst {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#regLast {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#regEmail {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#regPassword {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#reg-submit {
+    width: 100px;
+    height: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    position: absolute;
+    top: 220px;
+    left: 250px;
+}
+
+#regError {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 310px;
+    left: 290px;
+    color: orangered;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - login page */
+
+#login-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    color: black;
+    position: absolute;
+    top: 90px;
+    left: 160px;
+}
+
+#login-page {
+    height: 100%;
+    background-color: rgba(211, 213, 212, 255);
+}
+
+#login-picture {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 800px;
+}
+
+#login-form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 100px;
+    bottom: 130px;
+    width: 600px;
+}
+
+#login-label-email {
+    margin-bottom: 10px;
+}
+
+#loginEmail {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#login-label-password {
+    margin-bottom: 10px;
+}
+
+#loginPassword {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#login-submit {
+    width: 100px;
+    height: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    position: absolute;
+    top: 220px;
+    left: 250px;
+}
+
+#loginError {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 310px;
+    left: 290px;
+    color: orangered;
+}
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - petition page */
 
 #petition-title {
@@ -117,33 +291,6 @@
     width: 600px;
 }
 
-#form-info {
-    display: flex;
-    flex-direction: row;
-}
-
-#form-first {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    bottom: 270px;
-    left: 100px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-}
-
-#form-last {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    bottom: 270px;
-    right: 100px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-}
-
 #form-signature {
     display: flex;
     flex-direction: row;
@@ -159,29 +306,7 @@
     color: black;
     position: absolute;
     top: -35px;
-    left: 200px;
-}
-
-#label-first {
-    margin-bottom: 10px;
-}
-
-#label-last {
-    margin-bottom: 10px;
-}
-
-#first {
-    width: 170px;
-    height: 30px;
-    border: black solid 2px;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-#last {
-    width: 170px;
-    height: 30px;
-    border: black solid 2px;
-    background-color: rgba(255, 255, 255, 0.5);
+    left: 170px;
 }
 
 #canvas {
