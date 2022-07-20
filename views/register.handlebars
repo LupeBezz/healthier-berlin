@@ -1,15 +1,17 @@
 <div id="register-page">
-    <img id="register-picture" src="/images/carrots.jpg" alt="a hand holding a bunch of carrots">
+    <img id="register-picture" src="/images/veggies_02.jpg" alt="a few vegetables exploding in the air, artistically">
 
 
-<p id="register-title">Join our campaign today!</p>
+<p id="register-title">Join our campaign</p>
+<p id="register-argument">We believe in a healthier Berlin! If you want to contribute to our cause and sign our petition, please register with us!  </p>
+
 
 <p id="regError">{{message}}</p>
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - first, last, email, password -->
 
 <div id="register-form">
-    <form method="post">
+    <form method="post" autocomplete="off">
                 <label id ="reg-label-first" for="regFirst">First Name</label>
                 <input type="text" id="regFirst" name="regFirst" />
 
@@ -20,11 +22,12 @@
                 <input type="text" id="regEmail" name="regEmail" />
 
                 <label id ="reg-label-password" for="regPassword">Password</label>
-                <input type="text" id="regPassword" name="regPassword" />
+                <input type="password" id="regPassword" name="regPassword" />
 
                 <input id="reg-submit" type="submit" value="submit" />
     </form>
-    <a id="login-link" href="/login">or if you are already a user, please log in</a>
+    <p id="login-sentence">or if you are already a user, please log in <a id="login-link" href="/login">here</a></p>
+
 </div>
 
 <footer id="footer-LB">LB 2022</footer>

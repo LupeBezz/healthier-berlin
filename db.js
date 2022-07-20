@@ -56,15 +56,27 @@ module.exports.getUserInfo = (email) => {
     //return db.query(`SELECT * FROM users WHERE email = "${email}"`);
 };
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - functions used in the thanks page to find the people that signed
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the profile page to insert info to table "profiles"
 
-/*
-IN PROGRESS FOR TOMORROW
-module.exports.getSignersId = (signature) => {
-    return db.query(`SELECT id FROM signatures`);
+module.exports.addUserInfo = (url, city, age, id) => {
+    return db.query(
+        `INSERT INTO profiles(url, city, age, id) VALUES ($1, $2, $3, $4)`,
+        [url || null, city, age || null, id]
+    );
 };
 
-module.exports.getSignersInfo = (id) => {
-    return db.query(`SELECT * FROM users WHERE id = ${id}`);
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the signers page to retrieve the signers
+
+module.exports.getSignersInfo = () => {
+    return db.query(
+        `SELECT * FROM signatures LEFT JOIN users ON signatures.id = users.id LEFT JOIN profiles ON signatures.id = profiles.id`
+    );
 };
-*/
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the signers page to retrieve the signers from the same city
+
+module.exports.getCitySigners = (city) => {
+    return db.query(
+        `SELECT * FROM signatures LEFT JOIN users ON signatures.id = users.id LEFT JOIN profiles ON signatures.id = profiles.id WHERE city= '${city}'`
+    );
+};

@@ -5,8 +5,10 @@
         <p id="signers-subtitle">These people also agree with you</p>
         <div id="signers-list">
             {{#signersData}}
-                <p class="signersData">{{first}} {{last}}</p>
+                <p class="signersData">{{first}} {{last}} {{age}} <a id="city-link" href="/signers/{{city}}">  {{city}}</a></p>
             {{/signersData}}
+
+
         </div>
     </div>
     <div id="signers-line-1"></div>

@@ -1,24 +1,25 @@
 <div id="login-page">
-    <img id="login-picture" src="/images/carrots.jpg" alt="a hand holding a bunch of carrots">
+    <img id="login-picture" src="/images/tangerine.jpg" alt="a tangerine on a blue background">
 
 
 <p id="login-title">Please log in</p>
+<p id="login-argument">If you want to access your information and see how many people signed our petition so far, please log in!  </p>
 
 <p id="loginError">{{message}}</p>
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - first, last, email, password -->
 
 <div id="login-form">
-    <form method="post">
+    <form method="post" autocomplete="off">
                 <label id ="login-label-email" for="loginEmail">Email</label>
                 <input type="text" id="loginEmail" name="loginEmail" />
 
                 <label id ="login-label-password" for="loginPassword">Password</label>
-                <input type="text" id="loginPassword" name="loginPassword" />
+                <input type="password" id="loginPassword" name="loginPassword" />
 
                 <input id="login-submit" type="submit" value="submit" />
     </form>
-    <a id="register-link" href="/register">or if you are not registered yet, please do it here</a>
+    <p id="register-sentence">or if you are not registered yet, please do it <a id="register-link" href="/register">here</a></p>
 </div>
 
 <footer id="footer-LB">LB 2022</footer>

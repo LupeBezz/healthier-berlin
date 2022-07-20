@@ -14,7 +14,7 @@
 
 #intro-picture {
     /* background-size: cover; */
-    width: 100%;
+    height: 100%;
     height: auto;
     overflow: hidden;
 }
@@ -42,13 +42,13 @@
 #intro-subtitle {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    margin-top: 6px;
+    margin-top: 2px;
 }
 
-#intro-line-1 {
+/* #intro-line-1 {
     position: absolute;
     top: 370px;
-    left: 390px;
+    left: 880px;
     width: 170px;
     border: 1px solid black;
     color: black;
@@ -61,7 +61,7 @@
     width: 170px;
     border: 1px solid black;
     color: black;
-}
+} */
 
 #intro-link {
     text-decoration: none;
@@ -80,19 +80,32 @@
     color: black;
     position: absolute;
     top: 90px;
-    left: 160px;
+    left: 155px;
+    text-align: center;
+}
+
+#register-argument {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 6px;
+    position: absolute;
+    width: 600px;
+    top: 160px;
+    left: 90px;
+    text-align: center;
 }
 
 #register-page {
     height: 100%;
-    background-color: rgba(211, 213, 212, 255);
+    background-color: rgba(241, 206, 86, 255);
 }
 
 #register-picture {
     position: absolute;
     bottom: 0px;
     right: 0px;
-    height: 800px;
+    height: 100%;
 }
 
 #register-form {
@@ -106,19 +119,39 @@
 }
 
 #reg-label-first {
-    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    bottom: 135px;
+    left: 50px;
 }
 
 #reg-label-last {
-    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    bottom: 135px;
+    left: 350px;
 }
 
 #reg-label-email {
-    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    bottom: 55px;
+    left: 50px;
 }
 
 #reg-label-password {
-    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    bottom: 55px;
+    left: 350px;
 }
 
 #regFirst {
@@ -126,6 +159,9 @@
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
 }
 
 #regLast {
@@ -133,6 +169,9 @@
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 100px;
+    left: 350px;
 }
 
 #regEmail {
@@ -140,6 +179,9 @@
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
 }
 
 #regPassword {
@@ -147,6 +189,9 @@
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 20px;
+    left: 350px;
 }
 
 #reg-submit {
@@ -157,8 +202,8 @@
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
     position: absolute;
-    top: 220px;
-    left: 250px;
+    top: 50px;
+    left: 235px;
 }
 
 #regError {
@@ -166,8 +211,153 @@
     font-size: 20px;
     position: absolute;
     top: 310px;
-    left: 290px;
+    left: 270px;
+    color: red;
+}
+
+#login-sentence {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    top: 0px;
+    left: 65px;
+}
+
+#login-link {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+#login-link:hover {
     color: orangered;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - profile page */
+
+#profile-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    color: black;
+    position: absolute;
+    top: 90px;
+    left: 155px;
+    text-align: center;
+}
+
+#profile-argument {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 6px;
+    position: absolute;
+    width: 600px;
+    top: 160px;
+    left: 90px;
+    text-align: center;
+}
+
+#profile-page {
+    height: 100%;
+    background-color: rgba(241, 206, 86, 255);
+}
+
+#profile-picture {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 100%;
+}
+
+#profile-form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 100px;
+    bottom: 130px;
+    width: 600px;
+}
+
+#profile-label-age {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    bottom: 135px;
+    left: 50px;
+}
+
+#profile-label-city {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    bottom: 135px;
+    left: 350px;
+}
+
+#profile-label-homepage {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    bottom: 55px;
+    left: 50px;
+}
+
+#profileAge {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+}
+
+#profileCity {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 100px;
+    left: 350px;
+}
+
+#profileHomepage {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+}
+
+#profile-submit {
+    width: 130px;
+    height: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    position: absolute;
+    top: 50px;
+    left: 220px;
+}
+
+#profileError {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 310px;
+    left: 270px;
+    color: red;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - login page */
@@ -178,19 +368,31 @@
     color: black;
     position: absolute;
     top: 90px;
-    left: 160px;
+    left: 250px;
+}
+
+#login-argument {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 6px;
+    position: absolute;
+    width: 600px;
+    top: 160px;
+    left: 100px;
+    text-align: center;
 }
 
 #login-page {
     height: 100%;
-    background-color: rgba(211, 213, 212, 255);
+    background-color: rgba(103, 190, 235, 255);
 }
 
 #login-picture {
     position: absolute;
     bottom: 0px;
     right: 0px;
-    height: 800px;
+    height: 100%;
 }
 
 #login-form {
@@ -204,7 +406,12 @@
 }
 
 #login-label-email {
-    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    left: 120px;
+    bottom: 65px;
 }
 
 #loginEmail {
@@ -212,10 +419,18 @@
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    left: 120px;
+    bottom: 30px;
 }
 
 #login-label-password {
-    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    left: 320px;
+    bottom: 65px;
 }
 
 #loginPassword {
@@ -223,6 +438,9 @@
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    left: 320px;
+    bottom: 30px;
 }
 
 #login-submit {
@@ -233,15 +451,37 @@
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
     position: absolute;
-    top: 220px;
-    left: 250px;
+    top: 50px;
+    left: 255px;
+}
+
+#register-sentence {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    top: -10px;
+    left: 75px;
+}
+
+#register-link {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+#register-link:hover {
+    color: orangered;
 }
 
 #loginError {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     position: absolute;
-    top: 310px;
+    text-align: center;
+    top: 330px;
     left: 290px;
     color: orangered;
 }
@@ -279,7 +519,7 @@
     position: absolute;
     bottom: 0px;
     right: 0px;
-    height: 800px;
+    height: 100%;
 }
 
 #petition-form {
@@ -306,7 +546,7 @@
     color: black;
     position: absolute;
     top: -35px;
-    left: 170px;
+    left: 190px;
 }
 
 #canvas {
@@ -350,10 +590,14 @@
 
 #thanks-picture {
     /* background-size: cover; */
-    position: absolute;
+    /* position: relative;
     top: 0px;
     left: 465px;
-    width: 500px;
+    width: 500px; */
+    text-align: center;
+    display: inline-block;
+    height: 600px;
+    width: auto;
 }
 
 #thanks-box {
@@ -365,7 +609,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 450px;
+    top: 500px;
 }
 
 #thanks-title {
@@ -390,7 +634,7 @@
     color: red;
 }
 
-#thanks-line-1 {
+/* #thanks-line-1 {
     position: absolute;
     top: 490px;
     left: 360px;
@@ -406,11 +650,11 @@
     width: 185px;
     border: 1px solid black;
     color: black;
-}
+} */
 
 #thanks-signature {
     position: absolute;
-    bottom: -210px;
+    bottom: -190px;
     left: 80px;
 }
 
@@ -428,7 +672,7 @@
     position: absolute;
     bottom: 0px;
     left: 0px;
-    height: 800px;
+    height: 100%;
 }
 
 #signers-box {
@@ -464,7 +708,7 @@
     line-height: 30px;
 }
 
-#signers-line-1 {
+/* #signers-line-1 {
     position: absolute;
     top: 137px;
     left: 680px;
@@ -480,6 +724,21 @@
     width: 170px;
     border: 1px solid black;
     color: black;
+} */
+
+#city-link {
+    color: green;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - logout */
+
+#logout {
+    text-decoration: none;
+    color: black;
+}
+
+#logout:hover {
+    color: orangered;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - footer */
