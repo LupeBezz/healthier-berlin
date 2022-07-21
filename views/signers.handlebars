@@ -1,19 +1,49 @@
 <div id="signers-page">
+
     <img id="signers-picture" src="/images/kiwi.jpg" alt="some veggies exploding artistically">
-    <div id="signers-box">
+
+    <div id="signers-info">
+
+        <div id="signers-box">
         <h1 id="signers-title">GREAT MINDS THINK ALIKE</h1>
         <p id="signers-subtitle">These people also agree with you</p>
-        <div id="signers-list">
-            {{#signersData}}
-                <p class="signersData">{{first}} {{last}} {{age}} <a id="city-link" href="/signers/{{city}}">  {{city}}</a></p>
-            {{/signersData}}
-
-
         </div>
+
+        <div id="signers-list">
+        {{#signersData}}
+            {{#if url}}
+                <p class="signersData"><a id="url-link" target = "_blank" href="{{url}}">{{first}} {{last}}</a> 
+                {{#if age}}
+                | {{age}} 
+                {{/if}}
+                {{#if city}}
+                <a id="city-link" href="/signers/{{city}}"> | {{city}}</a></p>
+                {{/if}}
+            {{else}}
+                <p class="signersData">{{first}} {{last}}             
+                {{#if age}}
+                | {{age}} 
+                {{/if}} 
+                {{#if city}}
+                <a id="city-link" href="/signers/{{city}}"> | {{city}}</a></p>
+                {{/if}}
+            {{/if }}
+        {{/signersData}}
+        </div>
+
     </div>
-    <div id="signers-line-1"></div>
-    <div id="signers-line-2"></div>
+
+    {{!-- <div id="signers-line-1"></div>
+    <div id="signers-line-2"></div> --}}
+
+    <a id="signers-logout" href="/logout">logout</a>
+    <a id="signers-edit" href="/profile-edit">edit info</a>
+    <form action="/signature/delete" method="post">
+        <button id="signers-signature">unsign</button>
+    </form>
+{{!-- 
+<footer id="footer-LB">LB 2022</footer>
+<footer id="footer-photo">all images courtesy of Tangerine Newt</footer> --}}
 </div>
 
-<footer id="footer-LB">LB 2022</footer>
-<footer id="footer-photo">all images courtesy of Tangerine Newt</footer>
+

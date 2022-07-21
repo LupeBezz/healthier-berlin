@@ -15,6 +15,8 @@ app.use(express.urlencoded({ extended: false }));
 
 const cookieSession = require("cookie-session");
 
+const bcrypt = require("bcryptjs");
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - data from other files
 
 const db = require("./db");
@@ -92,15 +94,6 @@ app.get("/register", (req, res) => {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /register
 
-// var hashedPassword;
-// db.hashPassword(req.body.password)
-//     .then((results) => {
-//         hashedPassword = results;
-//     })
-//     .catch((err) => {
-//         "Error in hash password";
-//     });
-
 app.post("/register", (req, res) => {
     let time = new Date().toISOString().slice(0, 19).replace("T", " ");
     if (
@@ -145,7 +138,7 @@ app.post("/register", (req, res) => {
             .catch((err) => {
                 console.log("error in addUser", err);
                 res.render("register", {
-                    message: "There was a problem, please try again!",
+                    message: "Something is wrong!",
                 });
             });
         console.log("post request to /register works");
@@ -195,12 +188,14 @@ app.post("/profile", (req, res) => {
 
         //console.log("before san: ", req.body.profileHomepage);
 
-        if (!req.body.profileHomepage.startsWith("http")) {
+        if (
+            req.body.profileHomepage &&
+            !req.body.profileHomepage.startsWith("http")
+        ) {
             req.body.profileHomepage = "http://" + req.body.profileHomepage;
         }
         //console.log("after san: ", req.body.profileHomepage);
 
-        //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - sanitize age
         db.addUserInfo(
             req.body.profileHomepage,
             req.body.profileCity,
@@ -220,6 +215,117 @@ app.post("/profile", (req, res) => {
         res.redirect("/petition");
     }
 });
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /profile-edit
+
+app.get("/profile-edit", (req, res) => {
+    //console.log("req.session.loginId: ", req.session.loginId);
+
+    if (req.session.loginId) {
+        db.getInfoForEdit(req.session.loginId)
+            .then((result) => {
+                //console.log("result: ", result);
+                //console.log("result.rows[0]: ", result.rows[0]);
+                //console.log("result.rows[0].first: ", result.rows[0].first);
+                var userInfoForEdit = result.rows[0];
+                res.render("profile-edit", { userInfoForEdit });
+            })
+            .catch((err) => {
+                console.log("error in getInfoForEdit", err);
+            });
+    } else {
+        console.log("user not logged in");
+        res.redirect("/login");
+    }
+});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /profile-edit
+
+app.post("/profile-edit", (req, res) => {
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - sanitize first
+    req.body.profileEditFirst =
+        req.body.profileEditFirst.charAt(0).toUpperCase() +
+        req.body.profileEditFirst.slice(1).toLowerCase();
+
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - sanitize last
+
+    req.body.profileEditLast =
+        req.body.profileEditLast.charAt(0).toUpperCase() +
+        req.body.profileEditLast.slice(1).toLowerCase();
+
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - sanitize city
+
+    req.body.profileEditCity =
+        req.body.profileEditCity.charAt(0).toUpperCase() +
+        req.body.profileEditCity.slice(1).toLowerCase();
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - sanitize url
+
+    if (
+        req.body.profileEditHomepage &&
+        !req.body.profileEditHomepage.startsWith("http")
+    ) {
+        req.body.profileEditHomepage = "http://" + req.body.profileEditHomepage;
+    }
+
+    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - insert into database
+
+    let userUpdatePromise;
+
+    if (req.body.profileEditPassword) {
+        userUpdatePromise = db.editUserPass(
+            req.body.profileEditFirst,
+            req.body.profileEditLast,
+            req.body.profileEditPassword,
+            req.session.loginId
+        );
+    } else {
+        userUpdatePromise = db.editUserNoPass(
+            req.body.profileEditFirst,
+            req.body.profileEditLast,
+            req.session.loginId
+        );
+    }
+
+    userUpdatePromise
+        .then(() => {
+            console.log("it worked!! user updated!!");
+            res.redirect("/petition");
+        })
+        .catch((err) => {
+            console.log("error on updateInfo", err);
+        });
+
+    // userUpdatePromise
+    //     .then(() => {
+    //         return db.upsertUser(
+    //             req.body.profileEditHomepage,
+    //             req.body.profileEditCity,
+    //             req.body.profileEditAge,
+    //             req.session.loginId
+    //         );
+    //     })
+    //     .then(() => {
+    //         res.redirect("/petition");
+    //     })
+    //     .catch((err) => {
+    //         console.log("error on updateInfo", err);
+    //     });
+});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /signature/delete
+
+app.post("/signature/delete", (req, res) => {
+    db.deleteUserSignature(req.session.loginId)
+        .then(() => {
+            console.log("signature successfully erased");
+            res.redirect("/petition");
+        })
+        .catch((err) => {
+            console.log("error when deleting the signature", err);
+        });
+});
+
+//signature/delete
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /login
 
@@ -247,7 +353,7 @@ app.get("/login", (req, res) => {
     }
 });
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /login - - - In progress
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /login
 
 app.post("/login", (req, res) => {
     if (!req.body.loginEmail || !req.body.loginPassword) {
@@ -257,33 +363,48 @@ app.post("/login", (req, res) => {
     } else {
         db.getUserInfo(req.body.loginEmail)
             .then((results) => {
-                console.log("results:", results);
+                //console.log("results:", results);
                 if (results.rows.length === 0) {
                     console.log("email not found");
                     res.render("login", {
-                        message:
-                            "The login information is not right, please try again",
+                        message: "Something is wrong!",
                     });
                 } else {
                     console.log("email found");
-                    if (req.body.loginPassword === results.rows[0].password) {
-                        // - - - - - - - - - - - - - - - - - - - - req. session.loginId > the user successfully logged in
-                        req.session.loginId = results.rows[0].id;
-                        //res.send(`loginId: ${req.session.loginId}`);
-                        db.getUserSignature(req.session.loginId)
-                            .then((result) => {
-                                if (result.rows.length === 0) {
-                                    console.log("logged in but no signature");
-                                    res.redirect("/petition");
-                                } else {
-                                    console.log("logged in + signature");
-                                    res.redirect("/thanks");
-                                }
-                            })
-                            .catch((err) => {
-                                console.log("error in getUserSignature", err);
-                            });
-                    }
+                    let inputPassword = req.body.loginPassword;
+                    let databasePassword = results.rows[0].password;
+
+                    return bcrypt
+                        .compare(inputPassword, databasePassword)
+                        .then((result) => {
+                            if (result) {
+                                // - - - - - - - - - - - - - - - - - - - - req. session.loginId > the user successfully logged in
+                                console.log("the password is correct");
+                                req.session.loginId = results.rows[0].id;
+                                //res.send(`loginId: ${req.session.loginId}`);
+                                db.getUserSignature(req.session.loginId)
+                                    .then((result) => {
+                                        if (result.rows.length === 0) {
+                                            console.log(
+                                                "logged in but no signature"
+                                            );
+                                            res.redirect("/petition");
+                                        } else {
+                                            console.log(
+                                                "logged in + signature"
+                                            );
+                                            res.redirect("/thanks");
+                                        }
+                                    })
+                                    .catch((err) => {
+                                        console.log(
+                                            "passwords don't match!",
+                                            err
+                                        );
+                                        res.sendStatus(500);
+                                    });
+                            }
+                        });
                 }
             })
             .catch((err) => {

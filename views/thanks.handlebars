@@ -2,16 +2,18 @@
     <img id="thanks-picture" src="/images/strawberry.jpg" alt="strawberry on a solid background">
     <div id="thanks-box">
         <h1 id="thanks-title">THANK YOU!</h1>
-        <h2 id="thanks-subtitle">{{signers}} people signed the petition. Get to know them <a id="signature-counter" href="/signers">here</a> or <a id="logout" href="/logout">logout</a></h2>
+        <h2 id="thanks-subtitle">{{signers}} people signed the petition. Get to know them <a id="signature-counter" href="/signers">here</a></h2>
         <img id ="thanks-signature" src="{{displaySignature}}" alt="user signature">
     </div>
 </div>
 <div id="thanks-line-1"></div>
 <div id="thanks-line-2"></div>
 
-{{!-- <form method="post">
-    <input type="submit" id="logout-button" name="logout-button" value="logout-button">Log out</button>
-</form> --}}
+    <a id="signers-logout" href="/logout">logout</a>
+    <a id="signers-edit" href="/profile-edit">edit info</a>
+    <form action="/signature/delete" method="post">
+        <button id="signers-signature">unsign</button>
+    </form>
 
-<footer id="footer-LB">LB 2022</footer>
-<footer id="footer-photo">all images courtesy of Tangerine Newt</footer>
+{{!-- <footer id="footer-LB">LB 2022</footer>
+<footer id="footer-photo">all images courtesy of Tangerine Newt</footer> --}}
