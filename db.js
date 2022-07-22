@@ -48,14 +48,13 @@ module.exports.countSignatures = () => {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the login page to check if the user signed
 
 module.exports.getUserSignature = (id) => {
-    return db.query(`SELECT signature FROM signatures WHERE id = ${id}`);
+    return db.query(`SELECT signature FROM signatures WHERE id = $1`, [id]);
 };
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the login page to check the registered information
 
 module.exports.getUserInfo = (email) => {
-    return db.query(`SELECT * FROM users WHERE email='${email}'`);
-    //return db.query(`SELECT * FROM users WHERE email = "${email}"`);
+    return db.query(`SELECT * FROM users WHERE email = $1`, [email]);
 };
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the profile page to insert info to table "profiles"
@@ -79,7 +78,8 @@ module.exports.getSignersInfo = () => {
 
 module.exports.getCitySigners = (city) => {
     return db.query(
-        `SELECT * FROM signatures LEFT JOIN users ON signatures.id = users.id LEFT JOIN profiles ON signatures.id = profiles.id WHERE city= '${city}'`
+        `SELECT * FROM signatures LEFT JOIN users ON signatures.id = users.id LEFT JOIN profiles ON signatures.id = profiles.id WHERE city= $1`,
+        [city]
     );
 };
 
@@ -87,14 +87,15 @@ module.exports.getCitySigners = (city) => {
 
 module.exports.getInfoForEdit = (id) => {
     return db.query(
-        `SELECT * FROM signatures FULL OUTER JOIN users ON signatures.id = users.id FULL OUTER JOIN profiles ON signatures.id = profiles.id WHERE signatures.id = ${id}`
+        `SELECT * FROM signatures FULL OUTER JOIN users ON signatures.id = users.id FULL OUTER JOIN profiles ON signatures.id = profiles.id WHERE signatures.id = $1`,
+        [id]
     );
 };
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used to erase signature
 
 module.exports.deleteUserSignature = (id) => {
-    return db.query(`DELETE FROM signatures WHERE id = ${id}`);
+    return db.query(`DELETE FROM signatures WHERE id = $1`, [id]);
 };
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - functions used to edit the user info (users table)
@@ -102,24 +103,25 @@ module.exports.deleteUserSignature = (id) => {
 module.exports.editUserPass = (first, last, password, id) => {
     return hashPassword(password).then((hashedPassword) => {
         return db.query(
-            `UPDATE users SET first=$1, last=$2, password=$3 WHERE users.id = ${id}`,
-            [first, last, hashedPassword]
+            `UPDATE users SET first=$1, last=$2, password=$3 WHERE users.id = $4`,
+            [first, last, hashedPassword, id]
         );
     });
 };
 
 module.exports.editUserNoPass = (first, last, id) => {
-    return db.query(
-        `UPDATE users SET first=$1, last=$2 WHERE users.id = ${id}`,
-        [first, last]
-    );
+    return db.query(`UPDATE users SET first=$1, last=$2 WHERE users.id = $3`, [
+        first,
+        last,
+        id,
+    ]);
 };
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used to edit the user info (profiles table)
 
 module.exports.upsertUser = (url, city, age, id) => {
     return db.query(
-        `INSERT INTO profiles(url, city, age) VALUES ($1, $2, $3) ON CONFLICT (url, city, age) DO UPDATE SET url=$1, city=$2, age=$3 WHERE profiles.id = ${id}`,
-        [url || null, city, age || null]
+        `INSERT INTO profiles(url, city, age, id) VALUES ($1, $2, $3, $4) ON CONFLICT (id) DO UPDATE SET url=$1, city=$2, age=$3 WHERE profiles.id=$4`,
+        [url || null, city, age || null, id]
     );
 };

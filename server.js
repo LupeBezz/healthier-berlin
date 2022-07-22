@@ -43,8 +43,6 @@ app.use(
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /
 
 app.get("/", (req, res) => {
-    //console.log("req.session.loginId: ", req.session.loginId);
-
     if (req.session.loginId) {
         db.getUserSignature(req.session.loginId)
             .then((result) => {
@@ -60,8 +58,7 @@ app.get("/", (req, res) => {
                 console.log("error in getUserSignature", err);
             });
     } else {
-        console.log("not logged in and no signature");
-        console.log("get request to / works");
+        console.log("not logged in and no signature - get request to /");
         res.render("intro", {});
     }
 });
@@ -69,8 +66,6 @@ app.get("/", (req, res) => {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /register
 
 app.get("/register", (req, res) => {
-    //console.log("req.session.loginId: ", req.session.loginId);
-
     if (req.session.loginId) {
         db.getUserSignature(req.session.loginId)
             .then((result) => {
@@ -86,8 +81,9 @@ app.get("/register", (req, res) => {
                 console.log("error in getUserSignature", err);
             });
     } else {
-        console.log("not logged in and no signature");
-        console.log("get request to /register works");
+        console.log(
+            "not logged in and no signature - get request to /register"
+        );
         res.render("register", {});
     }
 });
@@ -148,8 +144,6 @@ app.post("/register", (req, res) => {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /profile
 
 app.get("/profile", (req, res) => {
-    //console.log("req.session.loginId: ", req.session.loginId);
-
     if (req.session.loginId) {
         db.getUserSignature(req.session.loginId)
             .then((result) => {
@@ -165,8 +159,7 @@ app.get("/profile", (req, res) => {
                 console.log("error in getUserSignature", err);
             });
     } else {
-        console.log("not logged in and no signature");
-        console.log("get request to /register works");
+        console.log("not logged in and no signature - get request to /profile");
         res.render("register", {});
     }
 });
@@ -186,15 +179,12 @@ app.post("/profile", (req, res) => {
             req.body.profileCity.slice(1).toLowerCase();
         //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - sanitize url
 
-        //console.log("before san: ", req.body.profileHomepage);
-
         if (
             req.body.profileHomepage &&
             !req.body.profileHomepage.startsWith("http")
         ) {
             req.body.profileHomepage = "http://" + req.body.profileHomepage;
         }
-        //console.log("after san: ", req.body.profileHomepage);
 
         db.addUserInfo(
             req.body.profileHomepage,
@@ -219,14 +209,9 @@ app.post("/profile", (req, res) => {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /profile-edit
 
 app.get("/profile-edit", (req, res) => {
-    //console.log("req.session.loginId: ", req.session.loginId);
-
     if (req.session.loginId) {
         db.getInfoForEdit(req.session.loginId)
             .then((result) => {
-                //console.log("result: ", result);
-                //console.log("result.rows[0]: ", result.rows[0]);
-                //console.log("result.rows[0].first: ", result.rows[0].first);
                 var userInfoForEdit = result.rows[0];
                 res.render("profile-edit", { userInfoForEdit });
             })
@@ -269,47 +254,39 @@ app.post("/profile-edit", (req, res) => {
 
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - insert into database
 
-    let userUpdatePromise;
+    let userEditPromise;
 
     if (req.body.profileEditPassword) {
-        userUpdatePromise = db.editUserPass(
+        userEditPromise = db.editUserPass(
             req.body.profileEditFirst,
             req.body.profileEditLast,
             req.body.profileEditPassword,
             req.session.loginId
         );
     } else {
-        userUpdatePromise = db.editUserNoPass(
+        userEditPromise = db.editUserNoPass(
             req.body.profileEditFirst,
             req.body.profileEditLast,
             req.session.loginId
         );
     }
 
-    userUpdatePromise
+    userEditPromise
         .then(() => {
-            console.log("it worked!! user updated!!");
+            return db.upsertUser(
+                req.body.profileEditHomepage,
+                req.body.profileEditCity,
+                req.body.profileEditAge,
+                req.session.loginId
+            );
+        })
+        .then(() => {
+            console.log("user info successfully updated");
             res.redirect("/petition");
         })
         .catch((err) => {
             console.log("error on updateInfo", err);
         });
-
-    // userUpdatePromise
-    //     .then(() => {
-    //         return db.upsertUser(
-    //             req.body.profileEditHomepage,
-    //             req.body.profileEditCity,
-    //             req.body.profileEditAge,
-    //             req.session.loginId
-    //         );
-    //     })
-    //     .then(() => {
-    //         res.redirect("/petition");
-    //     })
-    //     .catch((err) => {
-    //         console.log("error on updateInfo", err);
-    //     });
 });
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - POST: /signature/delete
@@ -325,13 +302,9 @@ app.post("/signature/delete", (req, res) => {
         });
 });
 
-//signature/delete
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /login
 
 app.get("/login", (req, res) => {
-    //console.log("req.session.loginId: ", req.session.loginId);
-
     if (req.session.loginId) {
         db.getUserSignature(req.session.loginId)
             .then((result) => {
@@ -347,8 +320,7 @@ app.get("/login", (req, res) => {
                 console.log("error in getUserSignature", err);
             });
     } else {
-        console.log("not logged in and no signature");
-        console.log("get request to /login works");
+        console.log("not logged in and no signature - get request to /login");
         res.render("login", {});
     }
 });
@@ -363,7 +335,6 @@ app.post("/login", (req, res) => {
     } else {
         db.getUserInfo(req.body.loginEmail)
             .then((results) => {
-                //console.log("results:", results);
                 if (results.rows.length === 0) {
                     console.log("email not found");
                     res.render("login", {
@@ -432,8 +403,9 @@ app.get("/petition", (req, res) => {
                 console.log("error in getUserSignature", err);
             });
     } else {
-        console.log("not logged in and no signature");
-        console.log("get request to /petition works");
+        console.log(
+            "not logged in and no signature - get request to /petition"
+        );
         res.redirect("/register");
     }
 });
@@ -465,8 +437,6 @@ app.post("/petition", (req, res) => {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /thanks
 
 app.get("/thanks", (req, res) => {
-    //console.log("req.session.loginId: ", req.session.loginId);
-
     if (req.session.loginId) {
         db.getUserSignature(req.session.loginId)
             .then((result) => {
@@ -495,8 +465,7 @@ app.get("/thanks", (req, res) => {
                 console.log("error in getUserSignature", err);
             });
     } else {
-        console.log("not logged in and no signature");
-        console.log("get request to /login works");
+        console.log("not logged in and no signature - get request to /thanks");
         res.redirect("/login");
     }
 });
@@ -511,8 +480,6 @@ app.get("/logout", (req, res) => {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /signers
 
 app.get("/signers", (req, res) => {
-    //console.log("req.session.loginId: ", req.session.loginId);
-
     if (req.session.loginId) {
         db.getUserSignature(req.session.loginId)
             .then((results) => {
@@ -524,11 +491,6 @@ app.get("/signers", (req, res) => {
                     var signersData;
                     db.getSignersInfo()
                         .then((results) => {
-                            //console.log("results.rows: ", results.rows);
-                            // console.log(
-                            //     "results.rows[0].first ",
-                            //     results.rows[0].first
-                            // );
                             signersData = results.rows;
                             res.render("signers", { signersData });
                         })
@@ -541,8 +503,7 @@ app.get("/signers", (req, res) => {
                 console.log("error in getUserSignature", err);
             });
     } else {
-        console.log("not logged in and no signature");
-        console.log("get request to /signers works");
+        console.log("not logged in and no signature - get request to /signers");
         res.redirect("/login");
     }
 });
@@ -550,12 +511,8 @@ app.get("/signers", (req, res) => {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /signers/:city
 
 app.get("/signers/:city", (req, res) => {
-    //console.log("req.session.loginId: ", req.session.loginId);
     var signersData;
-    //console.log("req.params: ", req.params);
     console.log("req.params.city: ", req.params.city);
-    //console.log("req.params.city: ", req.params.city);
-    //console.log("req.params[0].city[0]: ", req.params[0].city);
 
     db.getCitySigners(req.params.city)
         .then((results) => {

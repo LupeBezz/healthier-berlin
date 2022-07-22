@@ -101,7 +101,12 @@ body {
 
 #register-page {
     height: 100%;
-    background-color: rgba(241, 206, 86, 255);
+    background-image: linear-gradient(
+        rgba(237, 205, 84, 255),
+        rgba(240, 207, 91, 255),
+        rgba(239, 200, 79, 255),
+        rgba(230, 189, 63, 255)
+    );
 }
 
 #register-picture {
@@ -267,7 +272,15 @@ body {
 
 #profile-page {
     height: 100%;
-    background-color: rgba(241, 206, 86, 255);
+    background-image: linear-gradient(
+        rgba(234, 202, 79, 255),
+        rgba(241, 215, 105, 255),
+        rgba(242, 216, 105, 255),
+        rgba(238, 208, 88, 255),
+        rgba(232, 197, 69, 255),
+        rgba(227, 190, 57, 255),
+        rgba(220, 182, 47, 255)
+    );
 }
 
 #profile-picture {
@@ -592,7 +605,13 @@ body {
 
 #login-page {
     height: 100%;
-    background-color: rgba(103, 190, 235, 255);
+    background-image: linear-gradient(
+        rgba(116, 191, 233, 255),
+        rgba(111, 189, 228, 255),
+        rgba(96, 188, 237, 255),
+        rgba(111, 195, 239, 255),
+        rgba(96, 188, 237, 255)
+    );
 }
 
 #login-picture {
@@ -864,7 +883,7 @@ body {
 
 #thanks-signature {
     position: absolute;
-    bottom: -190px;
+    bottom: -200px;
     left: 30px;
 }
 
@@ -950,6 +969,7 @@ body {
     text-decoration-line: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 1px;
+    white-space: none;
 }
 
 #url-link {
