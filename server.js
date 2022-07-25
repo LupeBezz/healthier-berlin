@@ -11,16 +11,40 @@ app.set("view engine", "handlebars");
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: false }));
 
-const cookieSession = require("cookie-session");
+app.use(express.urlencoded({ extended: false }));
 
 const bcrypt = require("bcryptjs");
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - data from other files
+const cookieSession = require("cookie-session");
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - cookie session
+
+const SESSION_SECRET =
+    process.env.SESSION_SECRET || require("./secrets.json").SESSION_SECRET;
+
+app.use(
+    cookieSession({
+        secret: SESSION_SECRET,
+        maxAge: 1000 * 60 * 60 * 24 * 14,
+    })
+);
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - require database
 
 const db = require("./db");
 //console.log(db);
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - only https when in production
+
+if (process.env.NODE_ENV == "production") {
+    app.use((req, res, next) => {
+        if (req.headers["x-forwarded-proto"].startsWith("https")) {
+            return next();
+        }
+        res.redirect(`https://${req.hostname}${req.url}`);
+    });
+}
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - serve static files
 
@@ -29,16 +53,6 @@ app.use(express.static("./public"));
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - requests
 
 // req.session.loginId > if the user logged in successfully
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - USE: cookie session
-
-app.use(
-    cookieSession({
-        secret: "random secret",
-        maxAge: 1000 * 60 * 60 * 24 * 14,
-        sameSite: true,
-    })
-);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET: /
 
@@ -527,8 +541,9 @@ app.get("/signers/:city", (req, res) => {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - listen to the port
 
-const PORT = 8080;
+let localPORT = 8080;
+let productionPORT = process.env.PORT;
 
-app.listen(PORT, () => {
-    console.log("petition server is listening in PORT: ", PORT);
+app.listen(productionPORT || localPORT, () => {
+    console.log("petition server is listening in PORT: ", localPORT);
 });

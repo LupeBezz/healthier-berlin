@@ -1,8 +1,36 @@
 /* eslint-disable no-unused-vars */
 
-const spicedPg = require("spiced-pg");
-const db = spicedPg("postgres:postgres:postgres@localhost:5432/signatures");
 const bcrypt = require("bcryptjs");
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - local / heroku databases
+
+let dbUrl;
+
+if (process.env.NODE_ENV === "production") {
+    dbUrl = process.env.DATABASE_URL;
+} else {
+    const {
+        DB_USER,
+        DB_PASSWORD,
+        DB_HOST,
+        DB_PORT,
+        DB_NAME,
+    } = require("./secrets.json");
+    dbUrl = `postgres:${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
+}
+
+const spicedPg = require("spiced-pg");
+const db = spicedPg(dbUrl);
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - secrets
+
+let sessionSecret;
+
+if (process.env.NODE_ENV == "production") {
+    sessionSecret = process.env.SESSION_SECRET;
+} else {
+    sessionSecret = require("./secrets.json").SESSION_SECRET;
+}
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - functions to export
 

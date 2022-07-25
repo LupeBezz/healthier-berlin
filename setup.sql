@@ -18,7 +18,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE signatures (
-    signature VARCHAR NOT NULL CHECK (signature != ''),,
+    signature VARCHAR NOT NULL CHECK (signature != ''),
     time TIMESTAMP,
     id INTEGER NOT NULL PRIMARY KEY
     );
