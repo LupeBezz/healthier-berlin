@@ -1,26 +1,36 @@
 <div id="login-page">
-    <img id="login-picture" src="/images/tangerine.jpg" alt="a tangerine on a blue background">
 
+    <div id="login-info">
+        <p id="login-title">Please log in</p>
+        <p id="login-argument">If you want to access your information and see
+            <br />
+            how many people signed our petition so far, please log in!
+        </p>
 
-<p id="login-title">Please log in</p>
-<p id="login-argument">If you want to access your information and see how many people signed our petition so far, please log in!  </p>
+        <p id="register-sentence">— or if you are not registered yet, please do
+            it
+            <a id="register-link" href="/register">here</a>—</p>
 
-<p id="loginError">{{message}}</p>
+        <form id="login-form" method="post" autocomplete="off">
+            <label id="login-label-email" for="loginEmail">Email</label>
+            <input type="text" id="loginEmail" name="loginEmail" />
 
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - first, last, email, password -->
+            <label
+                id="login-label-password"
+                for="loginPassword"
+            >Password</label>
+            <input type="password" id="loginPassword" name="loginPassword" />
 
-<div id="login-form">
-    <form method="post" autocomplete="off">
-                <label id ="login-label-email" for="loginEmail">Email</label>
-                <input type="text" id="loginEmail" name="loginEmail" />
+            <input id="login-submit" type="submit" value="submit" />
+        </form>
 
-                <label id ="login-label-password" for="loginPassword">Password</label>
-                <input type="password" id="loginPassword" name="loginPassword" />
+        <p id="loginError">{{message}}</p>
+    </div>
 
-                <input id="login-submit" type="submit" value="submit" />
-    </form>
-    <p id="register-sentence">or if you are not registered yet, please do it <a id="register-link" href="/register">here</a></p>
+    <img
+        id="login-picture"
+        src="/images/tangerine.jpg"
+        alt="a tangerine on a blue background"
+    />
+
 </div>
-
-{{!-- <footer id="footer-LB">LB 2022</footer>
-<footer id="footer-photo">all images courtesy of Tangerine Newt</footer> --}}

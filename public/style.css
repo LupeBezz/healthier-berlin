@@ -13,12 +13,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #intro-picture {
-    /* background-size: cover; */
-    width: 100%;
+    width: 100vw;
+    overflow: hidden;
 }
 
 #intro-box {
@@ -35,7 +37,6 @@ body {
 }
 
 #intro-title {
-    /* font-family: "Quicksand", sans-serif; */
     font-family: "Montserrat", sans-serif;
     font-size: 50px;
     color: black;
@@ -46,24 +47,6 @@ body {
     font-size: 20px;
     margin-top: 2px;
 }
-
-/* #intro-line-1 {
-    position: absolute;
-    top: 370px;
-    left: 880px;
-    width: 170px;
-    border: 1px solid black;
-    color: black;
-}
-
-#intro-line-2 {
-    position: absolute;
-    top: 370px;
-    left: 880px;
-    width: 170px;
-    border: 1px solid black;
-    color: black;
-} */
 
 #intro-link {
     text-decoration: none;
@@ -77,89 +60,104 @@ body {
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - register page */
 
-#register-title {
-    font-family: "Montserrat", sans-serif;
-    font-size: 50px;
-    color: black;
-    position: absolute;
-    top: 90px;
-    left: 155px;
-    text-align: center;
-}
-
-#register-argument {
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: 6px;
-    position: absolute;
-    width: 600px;
-    top: 160px;
-    left: 90px;
-    text-align: center;
-}
-
 #register-page {
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-image: linear-gradient(
         rgba(237, 205, 84, 255),
         rgba(240, 207, 91, 255),
         rgba(239, 200, 79, 255),
         rgba(230, 189, 63, 255)
     );
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
 }
 
 #register-picture {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    height: 100%;
+    width: 50vw;
+}
+
+#register-info {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#register-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    color: black;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 1vh;
+}
+
+#register-argument {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+#login-sentence {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin-bottom: 10vh;
+}
+
+#login-link {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 400;
+    color: black;
+}
+
+#login-link:hover {
+    color: orangered;
 }
 
 #register-form {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    left: 100px;
-    bottom: 130px;
-    width: 600px;
+    align-items: center;
 }
 
 #reg-label-first {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 135px;
-    left: 50px;
+    margin-bottom: 6px;
 }
 
 #reg-label-last {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 135px;
-    left: 350px;
+    margin-bottom: 6px;
 }
 
 #reg-label-email {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 55px;
-    left: 50px;
+    margin-bottom: 6px;
 }
 
 #reg-label-password {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 55px;
-    left: 350px;
+    margin-bottom: 6px;
 }
 
 #regFirst {
@@ -167,9 +165,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 100px;
-    left: 50px;
+    margin-bottom: 18px;
 }
 
 #regLast {
@@ -177,9 +173,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 100px;
-    left: 350px;
+    margin-bottom: 18px;
 }
 
 #regEmail {
@@ -187,9 +181,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
+    margin-bottom: 18px;
 }
 
 #regPassword {
@@ -197,9 +189,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 20px;
-    left: 350px;
+    margin-bottom: 18px;
 }
 
 #reg-submit {
@@ -210,68 +200,23 @@ body {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 15px;
-    position: absolute;
-    top: 50px;
-    left: 235px;
+    margin-bottom: 40px;
+    margin-top: 15px;
 }
 
 #regError {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    position: absolute;
-    top: 310px;
-    left: 270px;
     color: red;
-}
-
-#login-sentence {
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    text-decoration: none;
-    color: black;
-    position: absolute;
-    top: 0px;
-    left: 65px;
-}
-
-#login-link {
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    text-decoration: none;
-    font-weight: 400;
-    color: black;
-}
-
-#login-link:hover {
-    color: orangered;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - profile page */
 
-#profile-title {
-    font-family: "Montserrat", sans-serif;
-    font-size: 50px;
-    color: black;
-    position: absolute;
-    top: 90px;
-    left: 155px;
-    text-align: center;
-}
-
-#profile-argument {
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: 6px;
-    position: absolute;
-    width: 600px;
-    top: 160px;
-    left: 90px;
-    text-align: center;
-}
-
 #profile-page {
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-image: linear-gradient(
         rgba(234, 202, 79, 255),
         rgba(241, 215, 105, 255),
@@ -281,50 +226,67 @@ body {
         rgba(227, 190, 57, 255),
         rgba(220, 182, 47, 255)
     );
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
 }
 
 #profile-picture {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    height: 100%;
+    width: 50vw;
+}
+
+#profile-info {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#profile-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    color: black;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 1vh;
+}
+
+#profile-argument {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 15vh;
 }
 
 #profile-form {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    left: 100px;
-    bottom: 130px;
-    width: 600px;
+    align-items: center;
 }
 
 #profile-label-age {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 135px;
-    left: 50px;
+    margin-bottom: 6px;
 }
 
 #profile-label-city {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 135px;
-    left: 350px;
+    margin-bottom: 6px;
 }
 
 #profile-label-homepage {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 55px;
-    left: 50px;
+    margin-bottom: 6px;
 }
 
 #profileAge {
@@ -332,9 +294,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 100px;
-    left: 50px;
+    margin-bottom: 18px;
 }
 
 #profileCity {
@@ -342,9 +302,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 100px;
-    left: 350px;
+    margin-bottom: 18px;
 }
 
 #profileHomepage {
@@ -352,140 +310,148 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
+    margin-bottom: 18px;
 }
 
 #profile-submit {
-    width: 130px;
+    width: 112px;
     height: 30px;
     border: none;
     background-color: rgba(255, 255, 255, 0.5);
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 15px;
-    position: absolute;
-    top: 50px;
-    left: 220px;
+    margin-bottom: 40px;
+    margin-top: 15px;
 }
 
 #profileError {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    position: absolute;
-    top: 310px;
-    left: 270px;
     color: red;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - profile-edit page */
+
+#profile-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(
+        rgba(234, 202, 79, 255),
+        rgba(241, 215, 105, 255),
+        rgba(242, 216, 105, 255),
+        rgba(238, 208, 88, 255),
+        rgba(232, 197, 69, 255),
+        rgba(227, 190, 57, 255),
+        rgba(220, 182, 47, 255)
+    );
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+#profile-picture {
+    width: 50vw;
+}
+
+#profile-info {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+/* - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - profile-edit page */
+
+#profile-edit-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(180, 228, 214, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+#profile-edit-picture {
+    width: 50vw;
+}
+
+#profile-edit-info {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
 
 #profile-edit-title {
     font-family: "Montserrat", sans-serif;
     font-size: 50px;
     color: black;
-    position: absolute;
-    top: 90px;
-    left: 260px;
     text-align: center;
-}
-
-#profile-edit-argument {
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: 6px;
-    position: absolute;
-    width: 600px;
-    top: 160px;
-    left: 90px;
-    text-align: center;
-}
-
-#profile-edit-page {
-    height: 100%;
-    background-color: rgba(180, 228, 214, 255);
-}
-
-#profile-edit-picture {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    height: 100%;
+    margin-top: 10vh;
+    margin-bottom: 4vh;
 }
 
 #profile-edit-form {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    left: 100px;
-    bottom: 130px;
-    width: 600px;
+    align-items: center;
 }
 
 #profile-edit-label-first {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 295px;
-    left: 50px;
+    margin-bottom: 6px;
 }
 
 #profile-edit-label-last {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 295px;
-    left: 350px;
+    margin-bottom: 6px;
 }
 
 #profile-edit-label-email {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 215px;
-    left: 50px;
+    margin-bottom: 6px;
 }
 
 #profile-edit-label-password {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 215px;
-    left: 350px;
+    margin-bottom: 6px;
 }
 
 #profile-edit-label-age {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 135px;
-    left: 50px;
+    margin-bottom: 6px;
 }
 
 #profile-edit-label-city {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 135px;
-    left: 350px;
+    margin-bottom: 6px;
 }
 
 #profile-edit-label-homepage {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    bottom: 55px;
-    left: 50px;
+    margin-bottom: 6px;
 }
 
 #profileEditFirst {
@@ -493,9 +459,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 260px;
-    left: 50px;
+    margin-bottom: 10px;
 }
 
 #profileEditLast {
@@ -503,9 +467,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 260px;
-    left: 350px;
+    margin-bottom: 10px;
 }
 
 #profileEditEmail {
@@ -513,9 +475,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 180px;
-    left: 50px;
+    margin-bottom: 10px;
 }
 
 #profileEditPassword {
@@ -523,9 +483,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 180px;
-    left: 350px;
+    margin-bottom: 10px;
 }
 
 #profileEditAge {
@@ -533,9 +491,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 100px;
-    left: 50px;
+    margin-bottom: 10px;
 }
 
 #profileEditCity {
@@ -543,9 +499,7 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 100px;
-    left: 350px;
+    margin-bottom: 10px;
 }
 
 #profileEditHomepage {
@@ -553,58 +507,34 @@ body {
     height: 30px;
     border: black solid 2px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
+    margin-bottom: 10px;
 }
 
 #profile-edit-submit {
-    width: 100px;
+    width: 112px;
     height: 30px;
     border: none;
     background-color: rgba(255, 255, 255, 0.5);
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 15px;
-    position: absolute;
-    top: 50px;
-    left: 240px;
+    margin-bottom: 20px;
+    margin-top: 15px;
 }
 
-#profileError {
+#profile-edit-error {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    position: absolute;
-    top: 310px;
-    left: 270px;
     color: red;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - login page */
 
-#login-title {
-    font-family: "Montserrat", sans-serif;
-    font-size: 50px;
-    color: black;
-    position: absolute;
-    top: 90px;
-    left: 250px;
-}
-
-#login-argument {
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: 6px;
-    position: absolute;
-    width: 600px;
-    top: 160px;
-    left: 100px;
-    text-align: center;
-}
-
 #login-page {
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-image: linear-gradient(
         rgba(116, 191, 233, 255),
         rgba(111, 189, 228, 255),
@@ -612,88 +542,54 @@ body {
         rgba(111, 195, 239, 255),
         rgba(96, 188, 237, 255)
     );
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
 }
 
 #login-picture {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    height: 100%;
+    width: 50vw;
 }
 
-#login-form {
-    position: absolute;
+#login-info {
+    width: 50vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    left: 100px;
-    bottom: 130px;
-    width: 600px;
+    justify-content: flex-start;
 }
 
-#login-label-email {
+#login-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    color: black;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 1vh;
+}
+
+#login-argument {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    color: black;
-    position: absolute;
-    left: 120px;
-    bottom: 65px;
-}
-
-#loginEmail {
-    width: 170px;
-    height: 30px;
-    border: black solid 2px;
-    background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    left: 120px;
-    bottom: 30px;
-}
-
-#login-label-password {
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    color: black;
-    position: absolute;
-    left: 320px;
-    bottom: 65px;
-}
-
-#loginPassword {
-    width: 170px;
-    height: 30px;
-    border: black solid 2px;
-    background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    left: 320px;
-    bottom: 30px;
-}
-
-#login-submit {
-    width: 100px;
-    height: 30px;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.5);
-    font-family: "Montserrat", sans-serif;
-    font-size: 15px;
-    position: absolute;
-    top: 50px;
-    left: 255px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 2vh;
 }
 
 #register-sentence {
     font-family: "Montserrat", sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
     color: black;
-    position: absolute;
-    top: -10px;
-    left: 75px;
+    text-align: center;
+    margin-bottom: 10vh;
 }
 
 #register-link {
     font-family: "Montserrat", sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
     color: black;
     font-weight: 400;
@@ -703,64 +599,115 @@ body {
     color: orangered;
 }
 
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-label-email {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 6px;
+}
+
+#loginEmail {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 18px;
+}
+
+#login-label-password {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 6px;
+}
+
+#loginPassword {
+    width: 170px;
+    height: 30px;
+    border: black solid 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 18px;
+}
+
+#login-submit {
+    width: 100px;
+    height: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+}
+
 #loginError {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    position: absolute;
-    text-align: center;
-    top: 330px;
-    left: 290px;
     color: orangered;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - petition page */
+
+#petition-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(211, 213, 212, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+}
+
+#petition-picture {
+    width: 50vw;
+}
+
+#petition-info {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
 
 #petition-title {
     font-family: "Montserrat", sans-serif;
     font-size: 50px;
     color: black;
-    position: absolute;
-    top: 90px;
-    left: 160px;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 1vh;
 }
 
 #petition-argument {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     line-height: 30px;
-    margin-top: 6px;
-    position: absolute;
-    width: 600px;
-    top: 160px;
-    left: 100px;
     text-align: center;
-}
-
-#petition-page {
-    height: 100%;
-    background-color: rgba(211, 213, 212, 255);
-}
-
-#petition-picture {
-    /* background-size: cover; */
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    height: 100%;
+    margin-bottom: 20vh;
 }
 
 #petition-form {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    left: 100px;
-    bottom: 130px;
-    width: 600px;
+    align-items: center;
 }
 
 #form-signature {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #signature {
@@ -771,9 +718,7 @@ body {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     color: black;
-    position: absolute;
-    top: -35px;
-    left: 190px;
+    margin-bottom: 6px;
 }
 
 #canvas {
@@ -793,39 +738,31 @@ body {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 15px;
-    position: absolute;
-    top: 220px;
-    left: 250px;
+    margin-bottom: 40px;
+    margin-top: 15px;
 }
 
 #error {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
-    position: absolute;
-    top: 310px;
-    left: 290px;
     color: orangered;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - thanks page */
 
 #thanks-page {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 100%;
+    align-items: center;
+    height: 100vh;
     background-color: rgba(235, 235, 171, 255);
 }
 
 #thanks-picture {
-    /* background-size: cover; */
-    /* position: relative;
-    top: 0px;
-    left: 465px;
-    width: 500px; */
-    text-align: center;
-    display: inline-block;
-    height: 600px;
-    width: auto;
+    height: 50vh;
 }
 
 #thanks-box {
@@ -836,12 +773,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 500px;
 }
 
 #thanks-title {
-    /* font-family: "Quicksand", sans-serif; */
     font-family: "Montserrat", sans-serif;
     font-size: 50px;
     color: black;
@@ -863,70 +797,51 @@ body {
     color: red;
 }
 
-/* #thanks-line-1 {
-    position: absolute;
-    top: 490px;
-    left: 360px;
-    width: 185px;
-    border: 1px solid black;
-    color: black;
-}
-
-#thanks-line-2 {
-    position: absolute;
-    top: 490px;
-    left: 895px;
-    width: 185px;
-    border: 1px solid black;
-    color: black;
-} */
-
 #thanks-signature {
-    position: absolute;
-    bottom: -200px;
-    left: 30px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - signers */
 
+/* - - - - - */
+
+/* - - - - - */
+
 #signers-page {
-    /* display: flex;
-    justify-content: center; */
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(216, 180, 34, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
 }
 
 #signers-picture {
-    /* background-size: cover; */
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    height: 100%;
+    width: 45vw;
 }
+
 #signers-info {
+    width: 55vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 740px;
+    justify-content: flex-start;
 }
 
 #signers-box {
     border: solid 3px black;
     width: 740px;
     height: 110px;
+    margin-top: 6vh;
+    margin-bottom: 6vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50px;
-    right: 50px;
 }
 
 #signers-title {
-    /* font-family: "Quicksand", sans-serif; */
     font-family: "Montserrat", sans-serif;
     font-size: 50px;
     color: black;
@@ -941,28 +856,7 @@ body {
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     line-height: 30px;
-    position: absolute;
-    top: 200px;
-    left: 0px;
 }
-
-/* #signers-line-1 {
-    position: absolute;
-    top: 137px;
-    left: 680px;
-    width: 170px;
-    border: 1px solid black;
-    color: black;
-}
-
-#signers-line-2 {
-    position: absolute;
-    top: 137px;
-    left: 1192px;
-    width: 170px;
-    border: 1px solid black;
-    color: black;
-} */
 
 #city-link {
     color: black;
@@ -997,7 +891,6 @@ body {
     align-items: center;
     width: 100px;
     height: 30px;
-    /* border: 1px black solid; */
     background-color: rgba(255, 255, 255, 0.5);
     color: black;
     font-family: "Montserrat", sans-serif;
@@ -1015,7 +908,6 @@ body {
     align-items: center;
     width: 100px;
     height: 30px;
-    /* border: 1px black solid; */
     background-color: rgba(255, 255, 255, 0.5);
     color: black;
     font-family: "Montserrat", sans-serif;

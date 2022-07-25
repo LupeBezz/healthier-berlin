@@ -1,34 +1,40 @@
 <div id="register-page">
-    <img id="register-picture" src="/images/veggies_02.jpg" alt="a few vegetables exploding in the air, artistically">
 
+    <div id="register-info">
+        <p id="register-title">Join our campaign</p>
+        <p id="register-argument">We believe in a healthier Berlin! If you want
+            to contribute
+            <br />to our cause and sign our petition, please register with us!
+        </p>
 
-<p id="register-title">Join our campaign</p>
-<p id="register-argument">We believe in a healthier Berlin! If you want to contribute to our cause and sign our petition, please register with us!  </p>
+        <p id="login-sentence">
+            — or if you are already a user, please log in
+            <a id="login-link" href="/login">here </a>—</p>
 
+        <form id="register-form" method="post" autocomplete="off">
+            <label id="reg-label-first" for="regFirst">First Name</label>
+            <input type="text" id="regFirst" name="regFirst" />
 
-<p id="regError">{{message}}</p>
+            <label id="reg-label-last" for="regLast">Last Name</label>
+            <input type="text" id="regLast" name="regLast" />
 
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - first, last, email, password -->
+            <label id="reg-label-email" for="regEmail">Email</label>
+            <input type="text" id="regEmail" name="regEmail" />
 
-<div id="register-form">
-    <form method="post" autocomplete="off">
-                <label id ="reg-label-first" for="regFirst">First Name</label>
-                <input type="text" id="regFirst" name="regFirst" />
+            <label id="reg-label-password" for="regPassword">Password</label>
+            <input type="password" id="regPassword" name="regPassword" />
 
-                <label id ="reg-label-last" for="regLast">Last Name</label>
-                <input type="text" id="regLast" name="regLast" />
+            <input id="reg-submit" type="submit" value="submit" />
+        </form>
 
-                <label id ="reg-label-email" for="regEmail">Email</label>
-                <input type="text" id="regEmail" name="regEmail" />
+        <p id="regError">{{message}}</p>
 
-                <label id ="reg-label-password" for="regPassword">Password</label>
-                <input type="password" id="regPassword" name="regPassword" />
+    </div>
 
-                <input id="reg-submit" type="submit" value="submit" />
-    </form>
-    <p id="login-sentence">or if you are already a user, please log in <a id="login-link" href="/login">here</a></p>
+    <img
+        id="register-picture"
+        src="/images/veggies_02.jpg"
+        alt="a few vegetables exploding in the air, artistically"
+    />
 
 </div>
-
-{{!-- <footer id="footer-LB">LB 2022</footer>
-<footer id="footer-photo">all images courtesy of Tangerine Newt</footer> --}}

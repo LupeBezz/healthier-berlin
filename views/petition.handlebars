@@ -1,32 +1,34 @@
 <div id="petition-page">
-    <img id="petition-picture" src="/images/carrots.jpg" alt="a hand holding a bunch of carrots">
 
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - first and last name -->
+    <div id="petition-info">
+        <h1 id="petition-title">WHAT WE BELIEVE</h1>
+        <p id="petition-argument">We believe that healthy food should be more
+            affordable.<br />
+            Everyone should hace access to fruits, veggies and legumes!
+            <br />That's why we ask for lower taxes for this items,
+            <br />for a healthier and happier population in our city.
+        </p>
 
-<h1 id="petition-title">WHAT WE BELIEVE</h1>
-<p id="petition-argument">We believe that healthy food should be more affordable. Everyone should hace access to fruits, veggies and legumes! That's why we ask for lower taxes for this items, for a healthier and happier population in our city.  </p>
+        <form id="petition-form" method="post" autocomplete="off">
+            <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - canvas and hidden field -->
+            <div id="form-signature">
+                <label for="signature"></label>
+                <p id="label-signature">Please sign our petition</p>
+                <canvas id="canvas" width="600" height="200"></canvas>
+                <input type="text" id="signature" name="signature" />
+            </div>
+            <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - submit button -->
+            <input id="submit" type="submit" value="submit" />
+        </form>
 
+        <p id="error">{{message}}</p>
 
-<p id="error">{{message}}</p>
+    </div>
 
-<div id="petition-form">
-    <form method="post" autocomplete="off">
+    <img
+        id="petition-picture"
+        src="/images/carrots.jpg"
+        alt="a hand holding a bunch of carrots"
+    />
 
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - canvas and hidden field -->
-        <div id="form-signature">  
-            <canvas id="canvas" width="600" height="200"></canvas>
-
-            <label for="signature"></label>
-            <p id ="label-signature">Please sign our petition</p>
-            <input type="text" id="signature" name="signature" />
-        </div>
-
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - submit button -->
-
-        <input id="submit" type="submit" value="submit" />
-    </form>
 </div>
-</div>
-
-{{!-- <footer id="footer-LB">LB 2022</footer>
-<footer id="footer-photo">all images courtesy of Tangerine Newt</footer> --}}

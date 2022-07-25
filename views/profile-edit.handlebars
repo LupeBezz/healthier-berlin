@@ -1,43 +1,36 @@
 <div id="profile-edit-page">
+
+    <div id="profile-edit-info">
+        <p id="profile-edit-title">Your information</p>
+
+        <form id="profile-edit-form" method="post" autocomplete="off">
+            <label id ="profile-edit-label-first" for="profileEditFirst">First</label>
+            <input type="text" id="profileEditFirst" name="profileEditFirst" {{#userInfoForEdit}} value="{{first}}"{{/userInfoForEdit}}/>
+
+            <label id ="profile-edit-label-last" for="profileEditLast">Last</label>
+            <input type="text" id="profileEditLast" name="profileEditLast" {{#userInfoForEdit}} value="{{last}}"{{/userInfoForEdit}}/>
+
+            <label id ="profile-edit-label-email" for="profileEditEmail">Email</label>
+            <input type="text" id="profileEditEmail" name="profileEditEmail" disabled {{#userInfoForEdit}} value="{{email}}"{{/userInfoForEdit}} />
+
+            <label id ="profile-edit-label-password" for="profileEditPassword">Password</label>
+            <input type="password" id="profileEditPassword" name="profileEditPassword"  />
+
+            <label id ="profile-edit-label-age" for="profileEditAge">Age</label>
+            <input type="number" id="profileEditAge" name="profileEditAge" {{#userInfoForEdit}} {{#if age}} value="{{age}}" {{/if}}{{/userInfoForEdit}} />
+
+            <label id ="profile-edit-label-city" for="profileEditCity">City</label>
+            <input type="text" id="profileEditCity" name="profileEditCity" {{#userInfoForEdit}} {{#if city}} value="{{city}}" {{/if}}{{/userInfoForEdit}} />
+
+            <label id ="profile-edit-label-homepage" for="profileEditHomepage">Homepage</label>
+            <input type="url" id="profileEditHomepage" name="profileEditHomepage" {{#userInfoForEdit}} {{#if url}} value="{{url}}" {{/if}} {{/userInfoForEdit}}/>
+
+            <input id="profile-edit-submit" type="submit" value="update" />
+        </form>
+
+        <p id="profile-edit-error">{{message}}</p>
+    </div>
+
     <img id="profile-edit-picture" src="/images/cherry.jpg" alt="two cherries on a blue background">
 
-
-    <p id="profile-edit-title">Your data</p>
-    <p id="profile-edit-argument">Here you can edit your information </p>
-
-
-    <p id="profileEditError">{{message}}</p>
-
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - first, last, email, password -->
-
-    <div id="profile-edit-form">
-        <form method="post" autocomplete="off">
-
-                    <label id ="profile-edit-label-first" for="profileEditFirst">First</label>
-                    <input type="text" id="profileEditFirst" name="profileEditFirst" {{#userInfoForEdit}} value="{{first}}"{{/userInfoForEdit}}/>
-
-                    <label id ="profile-edit-label-last" for="profileEditLast">Last</label>
-                    <input type="text" id="profileEditLast" name="profileEditLast" {{#userInfoForEdit}} value="{{last}}"{{/userInfoForEdit}}/>
-
-                    <label id ="profile-edit-label-email" for="profileEditEmail">Email</label>
-                    <input type="text" id="profileEditEmail" name="profileEditEmail" disabled {{#userInfoForEdit}} value="{{email}}"{{/userInfoForEdit}} />
-
-                    <label id ="profile-edit-label-password" for="profileEditPassword">Password</label>
-                    <input type="password" id="profileEditPassword" name="profileEditPassword"  />
-
-                    <label id ="profile-edit-label-age" for="profileEditAge">Age</label>
-                    <input type="number" id="profileEditAge" name="profileEditAge" {{#userInfoForEdit}} {{#if age}} value="{{age}}" {{/if}}{{/userInfoForEdit}} />
-
-                    <label id ="profile-edit-label-city" for="profileEditCity">City</label>
-                    <input type="text" id="profileEditCity" name="profileEditCity" {{#userInfoForEdit}} {{#if city}} value="{{city}}" {{/if}}{{/userInfoForEdit}} />
-
-                    <label id ="profile-edit-label-homepage" for="profileEditHomepage">Homepage</label>
-                    <input type="url" id="profileEditHomepage" name="profileEditHomepage" {{#userInfoForEdit}} {{#if url}} value="{{url}}" {{/if}} {{/userInfoForEdit}}/>
-
-                    <input id="profile-edit-submit" type="submit" value="update" />
-        </form>
-    </div>
 </div>
-
-{{!-- <footer id="footer-LB">LB 2022</footer>
-<footer id="footer-photo">all images courtesy of Tangerine Newt</footer> --}}
