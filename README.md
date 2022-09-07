@@ -1,8 +1,6 @@
 # petition: for a healthier-berlin
 
 *project done during the SPICED academy Full Stack Web Development bootcamp* <br/>
-Note: This website is not yet optimised for small screens, please take a look on a laptop or a bigger screen. <br/>
-
 
 ## overview <br/>
 This is an online petition where people can give their support to this cause. 
@@ -17,6 +15,8 @@ It has a visually attractive layout with brigth colors to capture the essence of
 - Signature visible in real time 
 - List of fellow supporters available with their location
 - Signature can be deleted
+
+Note: This website is not yet optimised for small screens, please take a look on a laptop or a bigger screen. <br/>
 
 ## previews <br/>
 
