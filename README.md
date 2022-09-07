@@ -22,20 +22,30 @@ Note: This website is not yet optimised for small screens, please take a look on
 
 **start page** <br/>
 visually attractive design that catches the eye and invites to know more
+&nbsp;
+
 <img src="public/images/gifs/00_intro.jpg"/>
 
 **register & login page** <br/>
 all basic functionalities and error displays
+&nbsp;
+
 <img src="public/images/gifs/01_login.gif" width="80vw"/>
 
 **additional data** <br/>
 optional additional user data
+&nbsp;
+
 <img src="public/images/gifs/02_data.gif" width="80vw"/>
 
 **signature** <br/>
 real time signature, and thank you page
+&nbsp;
+
 <img src="public/images/gifs/03_signature.gif" width="80vw"/>
 
 **profile update** <br/>
-possibility to update all the information about the user <br/>
+possibility to update all the information about the user
+&nbsp;
+
 <img src="public/images/gifs/04_update.gif" width="80vw"/>
