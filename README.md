@@ -22,7 +22,7 @@ Note: This website is not yet optimised for small screens, please take a look on
 
 **register & login page** <br/>
 visually attractive design with all basic functionalities and error displays
-<img src="client/public/gifs/01_login.gif" width="80vw"/>
+<img src="public/images/gifs/01_login.gif" width="80vw"/>
 
 **filter through recipes** <br/>
 recipes organised alphabetically, filters, preview of each recipe
