@@ -22,7 +22,7 @@ Note: This website is not yet optimised for small screens, please take a look on
 
 **start page** <br/>
 visually attractive design that catches the eye and invites to know more
-<img src="public/images/gifs/00_intro.jpg" width="80vw"/>
+<img src="public/images/gifs/00_intro.jpg"/>
 
 **register & login page** <br/>
 all basic functionalities and error displays
