@@ -1,4 +1,4 @@
-# petition: for a healthier-berlin
+# for a healthier berlin
 
 *project done during the SPICED academy Full Stack Web Development bootcamp* <br/>
 
@@ -21,7 +21,7 @@ Note: This website is not yet optimised for small screens, please take a look on
 ## previews <br/>
 
 **register & login page** <br/>
-visually attractive  approach with all basic functionalities and error displays
+visually attractive design with all basic functionalities and error displays
 <img src="client/public/gifs/01_login.gif" width="80vw"/>
 
 **filter through recipes** <br/>
