@@ -1,13 +1,14 @@
 # petition: for a healthier-berlin
 
 *project done during the SPICED academy Full Stack Web Development bootcamp* <br/>
+Note: This website is not yet optimised for small screens, please take a look on a laptop or a bigger screen. <br/>
+
 
 ## overview <br/>
 This is an online petition where people can give their support to this cause. 
 > We believe that healthy food should be more affordable. Everyone should hace access to fruits, veggies and legumes! <br/> That's why we ask for lower taxes for this items, for a healthier and happier population in our city. <br/>
 
 It has a visually attractive layout with brigth colors to capture the essence of the petition topic.
-Note: This website is not yet optimised for small screens, please take a look on a laptop or a bigger screen.
 
 - Registration and Login page with error display
 - Bcrypt for password protection
