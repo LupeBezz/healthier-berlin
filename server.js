@@ -335,7 +335,7 @@ app.get("/petition", (req, res) => {
 
 app.post("/petition", (req, res) => {
     let time = new Date().toISOString().slice(0, 19).replace("T", " ");
-    let userId = req.session.loginId; // ?????
+    let userId = req.session.loginId;
 
     db.addSignature(req.body.signature, time, userId)
         .then(() => {
