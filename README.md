@@ -4,9 +4,9 @@
 
 ## overview <br/>
 This is an online petition where people can give their support to this cause. 
-> We believe that healthy food should be more affordable. Everyone should hace access to fruits, veggies and legumes! <br/> That's why we ask for lower taxes for this items, for a healthier and happier population in our city. <br/>
+> We believe that healthy food should be more affordable. Everyone should hace access to fruits, veggies and legumes! That's why we ask for lower taxes for this items, for a healthier and happier population in our city. <br/>
 
-It has a visually attractive layout with brigth colors to capture the essence of the petition topic.
+It has a visually attractive layout with bright colors to capture the essence of the petition topic.
 
 - Registration and Login page with error display
 - Bcrypt for password protection
@@ -20,26 +20,32 @@ Note: This website is not yet optimised for small screens, please take a look on
 
 ## previews <br/>
 
+**start page** <br/>
+visually attractive design that catches the eye and invites to know more
+&nbsp;
+
+<img src="public/images/gifs/00_intro.jpg"/>
+
 **register & login page** <br/>
-visually attractive design with all basic functionalities and error displays
-<img src="client/public/gifs/01_login.gif" width="80vw"/>
+all basic functionalities and error displays
+&nbsp;
 
-**filter through recipes** <br/>
-recipes organised alphabetically, filters, preview of each recipe
-<img src="client/public/gifs/02_search.gif" width="80vw"/>
+<img src="public/images/gifs/01_login.gif" width="80vw"/>
 
-**recipe functionalities** <br/>
-timer function, cross out steps
-<img src="client/public/gifs/03_recipe.gif" width="80vw"/>
+**additional data** <br/>
+optional additional user data
+&nbsp;
 
-<!--- **menu and groceries list** <br/>
-generate a groceries list with the combined ingredients from all selected recipes
-<img src="client/public/gifs/04_menu.gif" width="80vw"/> --->
+<img src="public/images/gifs/02_data.gif" width="80vw"/>
 
-**new recipe > manual input** <br/>
-manual input and categorisation of recipes <br/>
-<img src="client/public/gifs/05_create_manual.gif" width="80vw"/>
+**signature** <br/>
+real time signature, and thank you page
+&nbsp;
 
-**new recipe > scrape** <br/>
-automatic input with a scraper (recipes in our page are for personal use only)
-<img src="client/public/gifs/06_create_scraper.gif" width="80vw"/>
+<img src="public/images/gifs/03_signature.gif" width="80vw"/>
+
+**profile update** <br/>
+possibility to update all the information about the user
+&nbsp;
+
+<img src="public/images/gifs/04_update.gif" width="80vw"/>
