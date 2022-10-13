@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-const bcrypt = require("bcryptjs");
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - local / heroku databases
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - database info
 
 let dbUrl;
 
@@ -19,10 +17,16 @@ if (process.env.NODE_ENV === "production") {
     dbUrl = `postgres:${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - middleware
+
+// to hash passwords
+const bcrypt = require("bcryptjs");
+
+// to handle the database
 const spicedPg = require("spiced-pg");
 const db = spicedPg(dbUrl);
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - secrets
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - secrets middleware
 
 let sessionSecret;
 
@@ -32,13 +36,28 @@ if (process.env.NODE_ENV == "production") {
     sessionSecret = require("./secrets.json").SESSION_SECRET;
 }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - functions to export
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - database functions
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - GET SIGNATURE
 
 module.exports.getSignature = () => {
     return db.query(`SELECT * FROM signatures`);
 };
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - functions used in the login page
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - PETITION PAGE
+
+module.exports.addSignature = (signature, time, id) => {
+    return db.query(
+        `INSERT INTO signatures(signature, time, id) VALUES ($1, $2, $3)`,
+        [signature, time, id]
+    );
+};
+
+module.exports.countSignatures = () => {
+    return db.query(`SELECT COUNT(*) FROM signatures`);
+};
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - LOGIN PAGE
 
 function hashPassword(password) {
     return bcrypt
@@ -60,32 +79,15 @@ module.exports.addUser = (first, last, email, password, time) => {
     });
 };
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the petition page (id comes from table "Users")
-
-module.exports.addSignature = (signature, time, id) => {
-    return db.query(
-        `INSERT INTO signatures(signature, time, id) VALUES ($1, $2, $3)`,
-        [signature, time, id]
-    );
-};
-
-module.exports.countSignatures = () => {
-    return db.query(`SELECT COUNT(*) FROM signatures`);
-};
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the login page to check if the user signed
-
 module.exports.getUserSignature = (id) => {
     return db.query(`SELECT signature FROM signatures WHERE id = $1`, [id]);
 };
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the login page to check the registered information
 
 module.exports.getUserInfo = (email) => {
     return db.query(`SELECT * FROM users WHERE email = $1`, [email]);
 };
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the profile page to insert info to table "profiles"
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - PROFILE PAGE
 
 module.exports.addUserInfo = (url, city, age, id) => {
     return db.query(
@@ -94,15 +96,13 @@ module.exports.addUserInfo = (url, city, age, id) => {
     );
 };
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the signers page to retrieve the signers
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SIGNERS PAGE
 
 module.exports.getSignersInfo = () => {
     return db.query(
         `SELECT * FROM signatures LEFT JOIN users ON signatures.id = users.id LEFT JOIN profiles ON signatures.id = profiles.id`
     );
 };
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the signers page to retrieve the signers from the same city
 
 module.exports.getCitySigners = (city) => {
     return db.query(
@@ -111,7 +111,13 @@ module.exports.getCitySigners = (city) => {
     );
 };
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used in the profile-edit page to retrieve the user information
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - DELETE SIGNATURE
+
+module.exports.deleteUserSignature = (id) => {
+    return db.query(`DELETE FROM signatures WHERE id = $1`, [id]);
+};
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - PROFILE-EDIT PAGE
 
 module.exports.getInfoForEdit = (id) => {
     return db.query(
@@ -119,14 +125,6 @@ module.exports.getInfoForEdit = (id) => {
         [id]
     );
 };
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used to erase signature
-
-module.exports.deleteUserSignature = (id) => {
-    return db.query(`DELETE FROM signatures WHERE id = $1`, [id]);
-};
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - functions used to edit the user info (users table)
 
 module.exports.editUserPass = (first, last, password, id) => {
     return hashPassword(password).then((hashedPassword) => {
@@ -144,8 +142,6 @@ module.exports.editUserNoPass = (first, last, id) => {
         id,
     ]);
 };
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function used to edit the user info (profiles table)
 
 module.exports.upsertUser = (url, city, age, id) => {
     return db.query(

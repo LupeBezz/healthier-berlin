@@ -14,16 +14,12 @@ var y = 0;
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - event listeners
 
 canvas.addEventListener("mousedown", (event) => {
-    //console.log("mousedown");
-
     x = event.offsetX;
     y = event.offsetY;
     isSigning = true;
 });
 
 canvas.addEventListener("mousemove", (event) => {
-    //console.log("mousemove");
-
     if (isSigning === true) {
         drawSignature(ctx, x, y, event.offsetX, event.offsetY);
         x = event.offsetX;
@@ -34,8 +30,6 @@ canvas.addEventListener("mousemove", (event) => {
 });
 
 canvas.addEventListener("mouseup", (event) => {
-    //console.log("mouseup");
-
     ctx.closePath();
     isSigning = false;
 });
